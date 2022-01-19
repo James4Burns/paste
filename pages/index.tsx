@@ -19,17 +19,27 @@ const Home: NextPage<TPageComponent> = () => {
   return (
     <form className="flex flex-col gap-y-8 h-full w-full" id={formID}>
       <div className="flex flex-col gap-y-2 h-1/2 w-full">
-        <Label htmlFor={pasteID} srOnly={false}>
-          Paste:
-        </Label>
+        <Label htmlFor={pasteID}>Paste:</Label>
         <TextArea
           form={formID}
           id={pasteID}
+          maxLength={pasteMaxLength}
+          minLength={pasteMinLength}
           name={pasteID}
           onChange={setPaste}
           required={true}
           value={paste}
         />
+        <div
+          className={`flex gap-x-1 justify-end text-sm ${
+            paste.length === pasteMaxLength ? "font-bold" : ""
+          }`}
+        >
+          <span className="sr-only">Character Count:</span>
+          <span>{paste.length}</span>
+          <span>/</span>
+          <span>{pasteMaxLength}</span>
+        </div>
       </div>
       <div className="grid grid-cols-2 gap-y-8 w-1/3">
         <Label htmlFor={expirationID}>Expiration:</Label>
@@ -71,5 +81,7 @@ const burnID = "burn";
 const expirationID = "expiration";
 const formID = "create";
 const pasteID = "paste";
+const pasteMaxLength = 10000;
+const pasteMinLength = 1;
 
 export default Home;
