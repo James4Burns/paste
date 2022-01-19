@@ -9,6 +9,7 @@ const TextArea: TComponent<TTextAreaComponent & TThemedComponent> = ({
   className = "",
   disabled = false,
   form,
+  id,
   maxLength,
   minLength,
   name,
@@ -26,6 +27,7 @@ const TextArea: TComponent<TTextAreaComponent & TThemedComponent> = ({
     } ${getResizableClass(resizable)} ${className}`}
     disabled={disabled}
     form={form}
+    id={id}
     maxLength={maxLength}
     minLength={minLength}
     name={name}

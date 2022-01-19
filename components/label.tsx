@@ -8,12 +8,20 @@ import {
 
 const Label: TComponent<
   TLabelComponent & TParentComponent & TThemedComponent
-> = ({ children, className, htmlFor, srOnly = false, theme = blankTheme }) => (
+> = ({
+  children,
+  className,
+  htmlFor,
+  id,
+  srOnly = false,
+  theme = blankTheme,
+}) => (
   <label
     className={`${srOnly ? "sr-only" : "not-sr-only"} ${
       theme.text
     } ${className}`}
     htmlFor={htmlFor}
+    id={id}
   >
     {children}
   </label>

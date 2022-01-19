@@ -4,6 +4,7 @@ import type { TTheme } from "./theme";
 
 export type TButtonComponent = {
   className?: string;
+  id?: string;
   onClick?: () => void;
   type?: "button" | "reset" | "submit";
 };
@@ -13,6 +14,7 @@ export type TCheckboxComponent = {
   className?: string;
   disabled?: boolean;
   form?: string;
+  id?: string;
   name?: string;
   onChange?: (val: boolean) => void;
   required?: boolean;
@@ -25,6 +27,7 @@ export type TInputComponent = {
   className?: string;
   disabled?: boolean;
   form?: string;
+  id?: string;
   maxLength?: number;
   minLength?: number;
   name?: string;
@@ -39,6 +42,7 @@ export type TInputComponent = {
 export type TLabelComponent = {
   className?: string;
   htmlFor?: string;
+  id?: string;
   srOnly?: boolean;
 };
 
@@ -52,6 +56,7 @@ export type TSelectComponent = {
   className?: string;
   disabled?: boolean;
   form?: string;
+  id?: string;
   name?: string;
   onChange?: (val: string) => void;
   required?: boolean;
@@ -64,6 +69,7 @@ export type TTextAreaComponent = {
   className?: string;
   disabled?: boolean;
   form?: string;
+  id?: string;
   maxLength?: number;
   minLength?: number;
   name?: string;

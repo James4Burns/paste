@@ -13,6 +13,7 @@ const Select: TComponent<
   className = "",
   disabled = false,
   form,
+  id,
   name,
   onChange = () => {},
   required = false,
@@ -23,6 +24,7 @@ const Select: TComponent<
     className={`${theme.bg} ${theme.text} border ${theme.border} ${className}`}
     disabled={disabled}
     form={form}
+    id={id}
     name={name}
     onChange={(event) => onChange(event.currentTarget.value)}
     required={required}

@@ -5,6 +5,7 @@ const Input: TComponent<TInputComponent & TThemedComponent> = ({
   className = "",
   disabled = false,
   form,
+  id,
   maxLength,
   minLength,
   name,
@@ -20,6 +21,7 @@ const Input: TComponent<TInputComponent & TThemedComponent> = ({
     className={`${theme.bg} ${theme.text} border ${theme.border} ${className}`}
     disabled={disabled}
     form={form}
+    id={id}
     inputMode={getInputMode(type)}
     maxLength={maxLength}
     minLength={minLength}

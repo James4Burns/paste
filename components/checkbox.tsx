@@ -10,6 +10,7 @@ const Checkbox: TComponent<TCheckboxComponent & TThemedComponent> = ({
   className = "",
   disabled = false,
   form,
+  id,
   name,
   onChange = () => {},
   required = false,
@@ -20,6 +21,7 @@ const Checkbox: TComponent<TCheckboxComponent & TThemedComponent> = ({
     className={`p-2 ${theme.bg} border ${theme.border} ${className}`}
     disabled={disabled}
     form={form}
+    id={id}
     name={name}
     onChange={(event) => onChange(event.currentTarget.checked)}
     required={required}
