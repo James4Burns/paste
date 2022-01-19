@@ -11,14 +11,18 @@ const Button: TComponent<
 > = ({
   children,
   className = "",
+  form,
   id,
+  name,
   onClick = () => {},
   theme = blankTheme,
   type = "button",
 }) => (
   <button
     className={`p-2 ${theme.bg} ${theme.text} border ${theme.border} ${className}`}
+    form={form}
     id={id}
+    name={name}
     onClick={() => onClick()}
     type={type}
   >

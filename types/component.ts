@@ -4,7 +4,9 @@ import type { TTheme } from "./theme";
 
 export type TButtonComponent = {
   className?: string;
+  form?: string;
   id?: string;
+  name?: string;
   onClick?: () => void;
   type?: "button" | "reset" | "submit";
 };
