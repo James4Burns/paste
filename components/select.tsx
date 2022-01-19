@@ -1,4 +1,4 @@
-import { blankTheme } from "library/theme";
+import { defaultTheme } from "library/theme";
 import {
   TComponent,
   TParentComponent,
@@ -17,7 +17,7 @@ const Select: TComponent<
   name,
   onChange = () => {},
   required = false,
-  theme = blankTheme,
+  theme = defaultTheme,
   value,
 }) => (
   <select

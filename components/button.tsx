@@ -1,4 +1,4 @@
-import { blankTheme } from "library/theme";
+import { defaultTheme } from "library/theme";
 import type {
   TButtonComponent,
   TComponent,
@@ -15,7 +15,7 @@ const Button: TComponent<
   id,
   name,
   onClick = () => {},
-  theme = blankTheme,
+  theme = defaultTheme,
   type = "button",
 }) => (
   <button

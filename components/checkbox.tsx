@@ -1,4 +1,4 @@
-import { blankTheme } from "library/theme";
+import { defaultTheme } from "library/theme";
 import {
   TCheckboxComponent,
   TComponent,
@@ -14,7 +14,7 @@ const Checkbox: TComponent<TCheckboxComponent & TThemedComponent> = ({
   name,
   onChange = () => {},
   required = false,
-  theme = blankTheme,
+  theme = defaultTheme,
 }) => (
   <input
     checked={checked}

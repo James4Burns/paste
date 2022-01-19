@@ -1,4 +1,4 @@
-import { blankTheme } from "library/theme";
+import { defaultTheme } from "library/theme";
 import {
   TComponent,
   TLabelComponent,
@@ -14,7 +14,7 @@ const Label: TComponent<
   htmlFor,
   id,
   srOnly = false,
-  theme = blankTheme,
+  theme = defaultTheme,
 }) => (
   <label
     className={`${srOnly ? "sr-only" : "not-sr-only"} ${

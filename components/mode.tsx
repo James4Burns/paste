@@ -1,12 +1,12 @@
 import useMode from "hooks/useMode";
-import { blankTheme } from "library/theme";
+import { defaultTheme } from "library/theme";
 import type {
   TComponent,
   TModeComponent,
   TThemedComponent,
 } from "types/component";
 
-const Mode: TComponent<TThemedComponent> = ({ theme = blankTheme }) => {
+const Mode: TComponent<TThemedComponent> = ({ theme = defaultTheme }) => {
   const [mode, switchMode] = useMode();
 
   return (

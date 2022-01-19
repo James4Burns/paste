@@ -1,4 +1,4 @@
-import { blankTheme } from "library/theme";
+import { defaultTheme } from "library/theme";
 import { TComponent, TInputComponent, TThemedComponent } from "types/component";
 
 const Input: TComponent<TInputComponent & TThemedComponent> = ({
@@ -13,7 +13,7 @@ const Input: TComponent<TInputComponent & TThemedComponent> = ({
   placeholder,
   readOnly = false,
   required = false,
-  theme = blankTheme,
+  theme = defaultTheme,
   type = "text",
   value,
 }) => (

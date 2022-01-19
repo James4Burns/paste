@@ -1,5 +1,5 @@
 import Mode from "./mode";
-import { blankTheme } from "library/theme";
+import { defaultTheme } from "library/theme";
 import type {
   TComponent,
   TParentComponent,
@@ -9,7 +9,7 @@ import type {
 
 const Layout: TComponent<
   TParentComponent & TThemedComponent & TTitleComponent
-> = ({ children, theme = blankTheme, title }) => (
+> = ({ children, theme = defaultTheme, title }) => (
   <div className={`flex flex-col h-full w-full ${theme.bg} ${theme.text}`}>
     <div className={`sticky p-2 w-full border-b ${theme.border}`}>
       <nav className="container flex justify-between mx-auto">

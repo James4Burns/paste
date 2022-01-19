@@ -1,4 +1,4 @@
-import { blankTheme } from "library/theme";
+import { defaultTheme } from "library/theme";
 import {
   TComponent,
   TTextAreaComponent,
@@ -18,7 +18,7 @@ const TextArea: TComponent<TTextAreaComponent & TThemedComponent> = ({
   readOnly = false,
   required = false,
   resizable = false,
-  theme = blankTheme,
+  theme = defaultTheme,
   value,
 }) => (
   <textarea
