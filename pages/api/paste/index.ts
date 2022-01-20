@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
 import { NextApiHandler } from "next";
 
 import { createError, createSuccess } from "library/api";
+import { database } from "library/database";
 import { toExpiration } from "library/expiration";
 import {
   checkQuery,
@@ -54,11 +54,11 @@ const handler: NextApiHandler = async (req, res) => {
     let slug = generateSlug();
 
     try {
-      let slugExists = await checkQuery(prisma, slug);
+      let slugExists = await checkQuery(database, slug);
 
       while (slugExists) {
         slug = generateSlug();
-        slugExists = await checkQuery(prisma, slug);
+        slugExists = await checkQuery(database, slug);
       }
     } catch (error: unknown) {
       res.status(500).json(createError("Unable to generate slug"));
@@ -66,7 +66,7 @@ const handler: NextApiHandler = async (req, res) => {
     }
 
     try {
-      await postQuery(prisma, slug, paste, expiration, burn, encrypted);
+      await postQuery(database, slug, paste, expiration, burn, encrypted);
     } catch (error: unknown) {
       res.status(500).json(createError("Unable to add paste to database"));
       return;
@@ -79,7 +79,5 @@ const handler: NextApiHandler = async (req, res) => {
     return;
   }
 };
-
-const prisma = new PrismaClient();
 
 export default handler;

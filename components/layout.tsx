@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import Mode from "./mode";
 import { defaultTheme } from "library/theme";
 import type {
@@ -14,7 +16,7 @@ const Layout: TComponent<
     <div className={`sticky p-2 w-full border-b ${theme.border}`}>
       <nav className="container flex justify-between mx-auto">
         <h1 className="text-lg font-bold">
-          <>{title}</>
+          <Link href="/">{title}</Link>
         </h1>
         <Mode />
       </nav>

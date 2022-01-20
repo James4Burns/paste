@@ -36,6 +36,8 @@ const Home: NextPage<TPageComponent> = () => {
     setURL(window.location.href);
   }, []);
 
+  const pasteURL = `${url}paste/${slug}`;
+
   const callAPI = async (): Promise<void> => {
     const response = await postAPI(paste, password, expiration, burn);
 
@@ -51,14 +53,12 @@ const Home: NextPage<TPageComponent> = () => {
   return (
     <div className="flex flex-col gap-y-4 h-full w-full">
       {slug !== defaultSlug ? (
-        <span>
-          Your paste URL is:{" "}
-          <Link href={`/paste/${slug}`} passHref>
-            <span className="font-bold">
-              {url}paste/{slug}
-            </span>
-          </Link>
-        </span>
+        <div className="flex gap-x-2">
+          <span>Your paste URL is:</span>
+          <span className="font-bold">
+            <Link href={`/paste/${slug}`}>{pasteURL}</Link>
+          </span>
+        </div>
       ) : undefined}
       <form className="flex flex-col gap-y-8 h-full w-full" id={formID}>
         <div className="flex flex-col gap-y-2 h-1/2 w-full">
@@ -88,6 +88,7 @@ const Home: NextPage<TPageComponent> = () => {
           <Label htmlFor={passwordID}>Password:</Label>
           <Input
             form={formID}
+            id={passwordID}
             name={passwordID}
             onChange={setPassword}
             type="password"

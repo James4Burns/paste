@@ -5,6 +5,22 @@ import { encrypt } from "./encryption";
 import { TResponse } from "types/api";
 import { TExpiration } from "types/expiration";
 
+export const getAPI = async (url: string) => {
+  try {
+    const request = await axios.get<
+      TResponse<{ paste: string; encrypted: boolean }>
+    >(url);
+
+    return request.data;
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error) && error.response) {
+      return createError(error.response.data);
+    } else {
+      return createError("Unknown error");
+    }
+  }
+};
+
 export const postAPI = async (
   paste: string,
   password: string,
@@ -32,4 +48,4 @@ export const postAPI = async (
   }
 };
 
-const apiRoute = "/api/paste";
+export const apiRoute = "/api/paste";

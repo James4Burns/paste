@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { Paste, PrismaClient } from "@prisma/client";
 import crypto from "crypto";
 
 import { TExpiration } from "types/expiration";
@@ -6,18 +6,18 @@ import { TExpiration } from "types/expiration";
 export const checkQuery = async (
   prisma: PrismaClient,
   slug: string
-): Promise<boolean> => {
+): Promise<Paste | null> => {
   await prisma.$connect;
 
   const found = await prisma.paste.findUnique({ where: { slug } });
 
   await prisma.$disconnect;
 
-  return found !== null;
+  return found;
 };
 
 export const generateSlug = (): string => {
-  return crypto.randomBytes(16).toString("hex");
+  return crypto.randomBytes(8).toString("hex");
 };
 
 export const getBody = (val: unknown): any | undefined => {
