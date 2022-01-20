@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useState } from "react";
 
-import { defaultExpiration, TExpiration, toExpiration } from "types/expiration";
+import { defaultExpiration, toExpiration } from "library/expiration";
+import { TExpiration } from "types/expiration";
 
 export const useExpiration = (): {
   expiration: TExpiration;
