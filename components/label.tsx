@@ -10,7 +10,7 @@ const Label: TComponent<
   TLabelComponent & TParentComponent & TThemedComponent
 > = ({
   children,
-  className,
+  className = "",
   htmlFor,
   id,
   srOnly = false,
