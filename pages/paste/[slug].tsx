@@ -43,7 +43,7 @@ const Paste: NextPage<TPageComponent> = () => {
   const encrypted = data.data.encrypted;
 
   return (
-    <div className="flex flex-col gap-y-8 h-full w-full">
+    <form className="flex flex-col gap-y-8 h-full w-full" id={formID}>
       {encrypted ? (
         <>
           <DisplayPaste
@@ -52,6 +52,7 @@ const Paste: NextPage<TPageComponent> = () => {
           <div className="grid grid-cols-2 gap-y-8 w-1/3">
             <Label htmlFor={passwordID}>Password:</Label>
             <Input
+              form={formID}
               id={passwordID}
               onChange={setPassword}
               type="password"
@@ -62,14 +63,14 @@ const Paste: NextPage<TPageComponent> = () => {
       ) : (
         <DisplayPaste paste={paste} />
       )}
-    </div>
+    </form>
   );
 };
 
 const DisplayPaste: TComponent<{ paste: string }> = ({ paste }) => (
   <div className="flex flex-col gap-y-2 h-1/2 w-full">
     <Label htmlFor={pasteID}>Paste:</Label>
-    <TextArea id={pasteID} readOnly={true} value={paste} />
+    <TextArea form={formID} id={pasteID} readOnly={true} value={paste} />
   </div>
 );
 
@@ -77,6 +78,7 @@ const Error: TComponent = () => <div>Not Found</div>;
 
 const Loading: TComponent = () => <div>Loading...</div>;
 
+const formID = "view";
 const passwordID = "password";
 const pasteID = "paste";
 
