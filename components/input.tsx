@@ -1,7 +1,14 @@
 import { defaultTheme } from "library/theme";
-import { TComponent, TInputComponent, TThemedComponent } from "types/component";
+import {
+  TComponent,
+  TInputComponent,
+  TInputComponentInputMode,
+  TInputComponentType,
+  TThemedComponent,
+} from "types/component";
 
 const Input: TComponent<TInputComponent & TThemedComponent> = ({
+  autoComplete = "off",
   className = "",
   disabled = false,
   form,
@@ -18,6 +25,7 @@ const Input: TComponent<TInputComponent & TThemedComponent> = ({
   value,
 }) => (
   <input
+    autoComplete={autoComplete}
     className={`${theme.bg} ${theme.text} border ${theme.border} ${className}`}
     disabled={disabled}
     form={form}
@@ -35,7 +43,7 @@ const Input: TComponent<TInputComponent & TThemedComponent> = ({
   />
 );
 
-const getInputMode = (type: "password" | "search" | "tel" | "text" | "url") => {
+const getInputMode = (type: TInputComponentType): TInputComponentInputMode => {
   switch (type) {
     case "password":
       return "text";

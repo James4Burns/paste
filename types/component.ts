@@ -26,6 +26,7 @@ export type TCheckboxComponent = {
 export type TComponent<T = {}> = (props: T) => JSX.Element;
 
 export type TInputComponent = {
+  autoComplete?: TInputComponentAutoComplete;
   className?: string;
   disabled?: boolean;
   form?: string;
@@ -37,9 +38,20 @@ export type TInputComponent = {
   placeholder?: string;
   readOnly?: boolean;
   required?: boolean;
-  type?: "password" | "search" | "tel" | "text" | "url";
+  type?: TInputComponentType;
   value?: string;
 };
+
+export type TInputComponentAutoComplete = "off" | "on";
+
+export type TInputComponentInputMode = "search" | "tel" | "text" | "url";
+
+export type TInputComponentType =
+  | "password"
+  | "search"
+  | "tel"
+  | "text"
+  | "url";
 
 export type TLabelComponent = {
   className?: string;
