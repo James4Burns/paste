@@ -4,10 +4,10 @@ import { createError, createSuccess } from "library/api";
 import { database } from "library/database";
 import { toExpiration } from "library/expiration";
 import {
-  checkQuery,
+  createPaste,
   generateSlug,
   getBody,
-  postQuery,
+  getPaste,
 } from "library/serverAPI";
 import { toBoolean } from "utilities/boolean";
 import { toString } from "utilities/string";
@@ -54,11 +54,11 @@ const handler: NextApiHandler = async (req, res) => {
     let slug = generateSlug();
 
     try {
-      let slugExists = await checkQuery(database, slug);
+      let slugExists = await getPaste(database, slug);
 
       while (slugExists) {
         slug = generateSlug();
-        slugExists = await checkQuery(database, slug);
+        slugExists = await getPaste(database, slug);
       }
     } catch (error: unknown) {
       res.status(500).json(createError("Unable to generate slug"));
@@ -66,7 +66,7 @@ const handler: NextApiHandler = async (req, res) => {
     }
 
     try {
-      await postQuery(database, slug, paste, expiration, burn, encrypted);
+      await createPaste(database, slug, paste, expiration, burn, encrypted);
     } catch (error: unknown) {
       res.status(500).json(createError("Unable to add paste to database"));
       return;
