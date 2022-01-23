@@ -1,6 +1,9 @@
 {
+  "author": "James Burns <James4Burns@users.noreply.github.com>",
+  "license": "MIT",
   "name": "paste",
   "private": true,
+  "repository": "git@github.com:james4burns/paste",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
