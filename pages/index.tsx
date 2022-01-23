@@ -16,7 +16,6 @@ import usePaste from "hooks/usePaste";
 import useSlug from "hooks/useSlug";
 
 import { defaultBurn } from "library/burn";
-import { postAPI } from "library/clientAPI";
 import { defaultExpiration, expirations } from "library/expiration";
 import { defaultPassword } from "library/password";
 import { defaultPaste } from "library/paste";
@@ -39,6 +38,7 @@ const Home: NextPage<TPageComponent> = () => {
   const pasteURL = `${url}paste/${slug}`;
 
   const callAPI = async (): Promise<void> => {
+    const postAPI = (await import("../library/clientAPI")).postAPI;
     const response = await postAPI(paste, password, expiration, burn);
 
     if (!response.error && typeof response.data === "string") {
