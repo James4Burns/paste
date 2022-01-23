@@ -26,6 +26,17 @@ export const createPaste = async (
   }
 };
 
+export const deletePaste = async (
+  prisma: PrismaClient,
+  slug: string
+): Promise<void> => {
+  await prisma.$connect;
+
+  await prisma.paste.delete({ where: { slug } });
+
+  await prisma.$disconnect;
+};
+
 export const generateSlug = (): string => {
   return crypto.randomBytes(8).toString("hex");
 };

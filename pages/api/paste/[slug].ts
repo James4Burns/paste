@@ -2,7 +2,7 @@ import { NextApiHandler } from "next";
 
 import { createError, createSuccess } from "library/api";
 import { database } from "library/database";
-import { getPaste } from "library/serverAPI";
+import { deletePaste, getPaste } from "library/serverAPI";
 import { toString } from "utilities/string";
 
 const handler: NextApiHandler = async (req, res) => {
@@ -19,6 +19,10 @@ const handler: NextApiHandler = async (req, res) => {
     if (!paste) {
       res.status(404).json(createError("Paste does not exist"));
       return;
+    }
+
+    if (paste.burn) {
+      await deletePaste(database, slug);
     }
 
     res.status(200).json(
