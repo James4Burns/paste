@@ -1,5 +1,6 @@
 import { Paste, PrismaClient } from "@prisma/client";
 import crypto from "crypto";
+import { formatISO } from "date-fns";
 
 import { TExpiration } from "types/expiration";
 
@@ -14,7 +15,14 @@ export const createPaste = async (
   await prisma.$connect;
 
   await prisma.paste.create({
-    data: { slug, paste, expiration, burn, encrypted },
+    data: {
+      slug,
+      paste,
+      expiration,
+      burn,
+      encrypted,
+      date: formatISO(Date.now()),
+    },
   });
 
   const found = await prisma.paste.findUnique({ where: { slug } });

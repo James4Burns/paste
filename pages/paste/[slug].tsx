@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 
 import Input from "components/input";
 import Label from "components/label";
@@ -22,7 +22,7 @@ const Paste: NextPage<TPageComponent> = () => {
   const router = useRouter();
   const slug = toString(router.query["slug"]) ?? "";
 
-  const { data, error } = useSWR<
+  const { data, error } = useSWRImmutable<
     TResponse<{ paste: string; encrypted: boolean } | {}>
   >(`${apiRoute}/${slug}`, getAPI);
 
