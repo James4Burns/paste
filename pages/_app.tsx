@@ -13,7 +13,7 @@ const MyApp: NextPage<AppProps<TPageComponent>> = ({ Component }) => {
   return (
     <>
       <Head>
-        <title>Paste</title>
+        <title>{settings.title}</title>
         <meta
           name="description"
           content="An encrypted pastebin made in Next.js."
