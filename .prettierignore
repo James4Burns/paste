@@ -1,7 +1,11 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# Environment
+.env
+
 # Next.js
 /.next
 
-# Yarn
+# Package manager
 /node_modules
+/package-lock.json

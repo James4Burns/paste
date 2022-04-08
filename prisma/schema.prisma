@@ -12,7 +12,7 @@ datasource db {
 }
 
 model Paste {
-  id         String  @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
   slug       String  @unique
   paste      String
   expiration String
